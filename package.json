@@ -1,0 +1,33 @@
+{
+  "name": "template-theme",
+  "version": "1.0.0",
+  "description": "A basic Shopify theme implementing Tailwind and AlpineJS using Laravel Mix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sysioco/template-theme.git"
+  },
+  "keywords": [
+    "shopify",
+    "tailwind",
+    "alpinejs",
+    "liquid",
+    "laravel-mix"
+  ],
+  "author": "Derek@Sysio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sysioco/template-theme/issues"
+  },
+  "homepage": "https://github.com/sysioco/template-theme#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.66.1",
+    "sass-loader": "^12.6.0",
+    "tailwindcss": "^3.3.3"
+  }
+}

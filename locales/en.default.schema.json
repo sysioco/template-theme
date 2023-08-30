@@ -1,0 +1,12 @@
+{
+  "settings_schema": {
+    "logo": {
+      "name": "logo",
+      "settings": {
+        "logo_image": {
+          "label": "Logo"
+        }
+      }
+    }
+  }
+}

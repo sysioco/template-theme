@@ -6,5 +6,15 @@
     "theme_author": "Sysio",
     "theme_documentation_url": "https://sysio.co/docs",
     "theme_support_url": "https://support.sysio.co/template"
+  },
+  {
+    "name": "template",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings_schema.logo.settings.logo_image.label"
+      }
+    ]
   }
 ]
