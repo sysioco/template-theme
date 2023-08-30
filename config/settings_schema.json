@@ -8,7 +8,7 @@
     "theme_support_url": "https://support.sysio.co/template"
   },
   {
-    "name": "template",
+    "name": "t.settings_schema.logo.name",
     "settings": [
       {
         "type": "image_picker",
