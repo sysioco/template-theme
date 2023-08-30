@@ -1,14 +1,14 @@
 [
   {
-    "name": "template_theme",
-    "theme_name": "Template",
-    "theme_version": "1.0",
-    "theme_author": "Sysio",
-    "theme_documentation_url": "https://sysio.co/docs",
-    "theme_support_url": "https://support.sysio.co/template"
+    "name": "theme_info",
+    "theme_name": "Template Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Derek Sysio",
+    "theme_documentation_url": "https://github.com/sysioco/template-theme",
+    "theme_support_url": "https://github.com/sysioco/template-theme/issues"
   },
   {
-    "name": "t.settings_schema.logo.name",
+    "name": "t:settings_schema.logo.name",
     "settings": [
       {
         "type": "image_picker",
