@@ -1,0 +1,19 @@
+<div>
+  <a href="{{ product_product.url }}">
+    {% if product_product.featured_image %}
+      <img
+        src="{{ product_product.featured_image | image_url: width: 240, height: 240 }}"
+        alt="{{ product_product.featured_image.alt }}"
+        loading="lazy"
+        height="240"
+        width="240"
+      >
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: '' }}
+    {% endif %}
+  </a>
+
+  <p>{{ product_product.vendor }}</p>
+  <a href="{{ product_product.url }}">{{ product_product.title }}</a>
+  <p>{{ product_product.price | money }}</p>
+</div>

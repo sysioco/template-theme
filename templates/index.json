@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "store-name": {
+      "type": "store-name"
+    }
+  },
+  "order": ["store-name"]
+}

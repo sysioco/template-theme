@@ -1,0 +1,10 @@
+[
+  {
+    "name": "template_theme",
+    "theme_name": "Template",
+    "theme_version": "1.0",
+    "theme_author": "Sysio",
+    "theme_documentation_url": "https://sysio.co/docs",
+    "theme_support_url": "https://support.sysio.co/template"
+  }
+]
