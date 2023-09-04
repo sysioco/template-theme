@@ -1,12 +1,25 @@
+{% comment %}
+  Announcement Bar
+  The text's appearance may be customized based on settings:
+    - `announcement_text_bold`: Determines if the text should be bold.
+    - `announcement_text_underline`: Determines if the text should be underlined.
+  - If `block.settings.announcement_link` is not empty, the text is wrapped in an anchor`<a>` element with the link.
+  - Else text wrapped in a paragraph `<p>` element.
+{% endcomment %}
+
 {%- for block in section.blocks -%}
   {% case block.type %}
     {% when 'announcement' %}
-      <div class="bg-primary text-white flex items-center justify-center">
+      <div
+        x-data="AnnouncementBar"
+        id="announcement"
+        class="bg-primary text-white  items-center justify-center hidden"
+      >
         {% if block.settings.announcement_text != blank %}
-          <p
+          <div
             class="
-              uppercase text-xs tracking-widest text-center px-4 py-3
-                  {% if block.settings.announcement_text_bold == true %}
+               uppercase text-xs tracking-widest text-center px-4 py-3
+                   {% if block.settings.announcement_text_bold == true %}
                   font-bold
                 {% endif %}
                 {% if block.settings.announcement_text_underline == true %}
@@ -15,16 +28,11 @@
             "
           >
             {% if block.settings.announcement_link != blank %}
-              <a
-                class="uppercase text-xs tracking-widest text-center px-4 py-3"
-                href="{{ block.settings.announcement_link }}"
-              >
-                {{- block.settings.announcement_text -}}
-              </a>
+              <a href="{{ block.settings.announcement_link }}">{{ block.settings.announcement_text }}</a>
             {% else %}
-              {{ block.settings.announcement_text }}
+              <p>{{ block.settings.announcement_text }}</p>
             {% endif %}
-          </p>
+          </div>
         {% endif %}
       </div>
   {% endcase %}
@@ -47,7 +55,7 @@
         {
           "type": "checkbox",
           "id": "announcement_text_bold",
-          "label": "Make the Announcement text bold",
+          "label": "Make the nnouncement text bold",
           "default": false
         },
         {

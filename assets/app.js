@@ -3247,6 +3247,45 @@ var module_default = src_default;
 
 /***/ }),
 
+/***/ "./src/AnnouncementBar.js":
+/*!********************************!*\
+  !*** ./src/AnnouncementBar.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  return {
+    current: 0,
+    announcements: [],
+    init: function init() {
+      var _this = this;
+      // get elements from DOM
+      this.announcements = Array.from(document.querySelectorAll('#announcement'));
+      // set initial state
+      this.announcements[this.current].classList.replace('hidden', 'flex');
+
+      // process elements on interval
+      setInterval(function () {
+        // Handle current value
+        _this.current = (_this.current + 1) % _this.announcements.length;
+
+        // Handle elements display
+        _this.announcements.forEach(function (element, i) {
+          element.classList.toggle('flex', _this.current === i);
+          element.classList.toggle('hidden', _this.current !== i);
+        });
+      }, 5000 // the duration of the animation
+      );
+    }
+  };
+});
+
+/***/ }),
+
 /***/ "./src/app.js":
 /*!********************!*\
   !*** ./src/app.js ***!
@@ -3255,8 +3294,13 @@ var module_default = src_default;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _AnnouncementBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnnouncementBar */ "./src/AnnouncementBar.js");
+
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+// Components
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('AnnouncementBar', _AnnouncementBar__WEBPACK_IMPORTED_MODULE_1__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 /***/ }),
