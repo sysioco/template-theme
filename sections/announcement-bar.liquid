@@ -1,0 +1,36 @@
+<section>
+  <h1>Announcemnt</h1>
+</section>
+
+{% schema %}
+{
+  "name": "announcement-bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_bar_text",
+      "label": "Display text for Announcement Bar",
+      "default": "Hello World"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "announcement_text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "announcement_link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

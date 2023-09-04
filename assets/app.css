@@ -433,6 +433,81 @@ html {
   --er: 343 88% 53%;
 }
 
+[data-theme=mytheme] {
+  --p: 293 87% 83%;
+  --pf: 293 87% 76%;
+  --sf: 43 79% 54%;
+  --af: 336 91% 56%;
+  --nf: 280 18% 6%;
+  --b2: 260 2% 21%;
+  --b3: 260 2% 14%;
+  --bc: 260 1% 84%;
+  --pc: 294 14% 16%;
+  --sc: 41 35% 13%;
+  --ac: 341 35% 14%;
+  --nc: 282 3% 81%;
+  --inc: 210 34% 13%;
+  --suc: 159 25% 14%;
+  --wac: 44 40% 14%;
+  --erc: 358 100% 93%;
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: .2s;
+  --btn-text-case: uppercase;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+  --s: 43 79% 61%;
+  --a: 336 91% 63%;
+  --n: 280 18% 13%;
+  --b1: 260 2% 28%;
+  --in: 205 79% 56%;
+  --su: 162 65% 62%;
+  --wa: 47 97% 62%;
+  --er: 343 88% 53%;
+}
+
+[data-theme=cupcake] {
+  color-scheme: light;
+  --pf: 183 47% 52%;
+  --sf: 338 71% 71%;
+  --af: 39 84% 51%;
+  --nf: 280 46% 7%;
+  --in: 198 93% 60%;
+  --su: 158 64% 52%;
+  --wa: 43 96% 56%;
+  --er: 0 91% 71%;
+  --pc: 183 20% 13%;
+  --sc: 340 15% 16%;
+  --ac: 37 41% 13%;
+  --nc: 283 9% 81%;
+  --inc: 198 100% 12%;
+  --suc: 158 100% 10%;
+  --wac: 43 100% 11%;
+  --erc: 0 100% 14%;
+  --rounded-box: 1rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: .2s;
+  --btn-text-case: uppercase;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --p: 183 47% 59%;
+  --s: 338 71% 78%;
+  --a: 39 84% 58%;
+  --n: 280 46% 14%;
+  --b1: 24 33% 97%;
+  --b2: 27 22% 92%;
+  --b3: 23 14% 89%;
+  --bc: 280 46% 14%;
+  --rounded-btn: 1.9rem;
+  --tab-border: 2px;
+  --tab-radius: .5rem;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -574,7 +649,49 @@ html {
   --tw-border-opacity: 0.2;
   border-radius: var(--rounded-btn, 0.5rem);
 }
+.drawer {
+  position: relative;
+  display: grid;
+  grid-auto-columns: max-content auto;
+  width: 100%;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown > *:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.dropdown .dropdown-content {
+  position: absolute;
+}
+.dropdown:is(:not(details)) .dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: top;
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.dropdown.dropdown-open .dropdown-content,
+.dropdown:not(.dropdown-hover):focus .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+}
 @media (hover: hover) {
+
+  .dropdown.dropdown-hover:hover .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+  }
 
   .btm-nav > *.disabled:hover,
       .btm-nav > *[disabled]:hover {
@@ -586,6 +703,12 @@ html {
     --tw-text-opacity: 0.2;
   }
 
+  .dropdown.dropdown-hover:hover .dropdown-content {
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
   :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(.active):hover, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(.active):hover {
     cursor: pointer;
     background-color: hsl(var(--bc) / 0.1);
@@ -594,6 +717,9 @@ html {
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
+}
+.dropdown:is(details) summary::-webkit-details-marker {
+  display: none;
 }
 .footer {
   display: grid;
@@ -954,6 +1080,13 @@ html {
           transparent 40.99%
         ),
         linear-gradient(45deg, hsl(var(--chkfg)) 50%, hsl(var(--chkbg)) 50.99%);
+}
+.dropdown.dropdown-open .dropdown-content,
+.dropdown:focus .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .input[list]::-webkit-calendar-picker-indicator {
   line-height: 1em;
@@ -1450,14 +1583,29 @@ html {
 [dir="rtl"] .steps-vertical .step:before {
   margin-right: auto;
 }
+.sticky {
+  position: sticky;
+}
 .block {
   display: block;
+}
+.flex {
+  display: flex;
 }
 .table {
   display: table;
 }
 .hidden {
   display: none;
+}
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.capitalize {
+  text-transform: capitalize;
 }
 .underline {
   text-decoration-line: underline;

@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "template-activate-account"
+      "type": "template"
     }
   },
   "order": ["main"]
