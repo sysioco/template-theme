@@ -1,5 +1,5 @@
 {
-  "name": "t:sections.header.name",
+  "name": "t:settings_schema.sections.header.name",
   "type": "header",
   "sections": {
     "announcement-bar": {
@@ -20,12 +20,8 @@
           }
         }
       },
-      "block_order": [
-        "announcement-bar-0",
-        "5b53534e-7dba-491e-a713-c7b24913c829"
-      ],
-      "settings": {
-      }
+      "block_order": ["announcement-bar-0", "5b53534e-7dba-491e-a713-c7b24913c829"],
+      "settings": {}
     },
     "header": {
       "type": "header",
@@ -34,8 +30,5 @@
       }
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["announcement-bar", "header"]
 }

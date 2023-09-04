@@ -1,26 +1,65 @@
-<section>
-  <h1>Announcemnt</h1>
-</section>
+{%- for block in section.blocks -%}
+  {% case block.type %}
+    {% when 'announcement' %}
+      <div class="bg-primary text-white flex items-center justify-center">
+        {% if block.settings.announcement_text != blank %}
+          <p
+            class="
+              uppercase text-xs tracking-widest text-center px-4 py-3
+                  {% if block.settings.announcement_text_bold == true %}
+                  font-bold
+                {% endif %}
+                {% if block.settings.announcement_text_underline == true %}
+                underline
+              {% endif %}
+            "
+          >
+            {% if block.settings.announcement_link != blank %}
+              <a
+                class="uppercase text-xs tracking-widest text-center px-4 py-3"
+                href="{{ block.settings.announcement_link }}"
+              >
+                {{- block.settings.announcement_text -}}
+              </a>
+            {% else %}
+              {{ block.settings.announcement_text }}
+            {% endif %}
+          </p>
+        {% endif %}
+      </div>
+  {% endcase %}
+{%- endfor -%}
 
 {% schema %}
 {
-  "name": "t:sections.announcement-bar.name",
+  "name": "t:settings_schema.sections.announcement-bar.name",
   "max_blocks": 12,
   "blocks": [
     {
       "type": "announcement",
-      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "name": "t:settings_schema.sections.announcement-bar.blocks.announcement.name",
       "settings": [
         {
           "type": "text",
           "id": "announcement_text",
-          "default": "Welcome to our store",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "announcement_text_bold",
+          "label": "Make the Announcement text bold",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "announcement_text_underline",
+          "label": "Add an underline to the Accouncement text",
+          "default": false
         },
         {
           "type": "url",
           "id": "announcement_link",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.link.label"
         }
       ]
     }

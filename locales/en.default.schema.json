@@ -1,7 +1,6 @@
 {
   "settings_schema": {
-    "global": {
-    },
+    "global": {},
     "logo": {
       "name": "Logo",
       "settings": {
@@ -18,14 +17,14 @@
         "name": "Announcement Bar",
         "blocks": {
           "announcement": {
-            "name": "Announcement",
+            "name": "Announcement Block",
             "label": "Announcement text to display",
             "settings": {
               "text": {
-                "label": "Text"
+                "label": "Annoucement Text"
               },
               "link": {
-                "label": "Link"
+                "label": "Announcement Link"
               }
             }
           }
