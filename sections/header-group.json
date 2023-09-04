@@ -9,6 +9,8 @@
           "type": "announcement",
           "settings": {
             "announcement_text": "Welcome to our store",
+            "announcement_text_bold": false,
+            "announcement_text_underline": false,
             "announcement_link": ""
           }
         },
@@ -16,12 +18,28 @@
           "type": "announcement",
           "settings": {
             "announcement_text": "Hello World",
+            "announcement_text_bold": false,
+            "announcement_text_underline": true,
             "announcement_link": ""
+          }
+        },
+        "6a7ad47b-c23d-4030-8765-7293bfb6696c": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "ANother announcement",
+            "announcement_text_bold": true,
+            "announcement_text_underline": false,
+            "announcement_link": "shopify:\/\/collections\/automated-collection"
           }
         }
       },
-      "block_order": ["announcement-bar-0", "5b53534e-7dba-491e-a713-c7b24913c829"],
-      "settings": {}
+      "block_order": [
+        "announcement-bar-0",
+        "5b53534e-7dba-491e-a713-c7b24913c829",
+        "6a7ad47b-c23d-4030-8765-7293bfb6696c"
+      ],
+      "settings": {
+      }
     },
     "header": {
       "type": "header",
@@ -30,5 +48,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
