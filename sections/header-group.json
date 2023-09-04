@@ -8,20 +8,34 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "background-1",
-            "link": ""
+            "announcement_text": "Welcome to our store",
+            "announcement_link": ""
+          }
+        },
+        "5b53534e-7dba-491e-a713-c7b24913c829": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "Hello World",
+            "announcement_link": ""
           }
         }
       },
-      "block_order": ["announcement-bar-0"],
-      "settings": {}
+      "block_order": [
+        "announcement-bar-0",
+        "5b53534e-7dba-491e-a713-c7b24913c829"
+      ],
+      "settings": {
+      }
     },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "menu": "main-menu"
+      }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

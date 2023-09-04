@@ -1,6 +1,7 @@
 {
   "settings_schema": {
-    "global": {},
+    "global": {
+    },
     "logo": {
       "name": "Logo",
       "settings": {

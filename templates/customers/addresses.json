@@ -1,8 +1,12 @@
 {
   "sections": {
     "main": {
-      "type": "template"
+      "type": "template",
+      "settings": {
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
