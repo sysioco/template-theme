@@ -23,6 +23,7 @@ module.exports = {
           error: '#f11e59',
         },
       },
+      'cupcake',
     ],
   },
   plugins: [require('daisyui')],

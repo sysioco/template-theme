@@ -8,6 +8,28 @@
           "label": "Logo"
         }
       }
+    },
+    "sections": {
+      "header": {
+        "name": "Header"
+      },
+      "announcement-bar": {
+        "name": "Announcement bar",
+        "blocks": {
+          "announcement": {
+            "name": "Announcement",
+            "label": "Announcement text to display",
+            "settings": {
+              "text": {
+                "label": "Text"
+              },
+              "link": {
+                "label": "Link"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

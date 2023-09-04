@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}" data-theme="mytheme">
+{% comment %}
+  Theme: Cupcake
+  Developer: Sysio
+  Date: 04/09/2023
+{% endcomment %}
+<html lang="{{ request.locale.iso_code }}" data-theme="cupcake">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,8 +43,8 @@
     {{ content_for_header }}
   </head>
   <body>
-    {% section 'header' %}
-    <main id="main" class="mai" role="main" tabindex="-1">
+    {% sections 'header-group' %}
+    <main id="main" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
     {% section 'footer' %}
