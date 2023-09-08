@@ -18,13 +18,18 @@
         "blocks": {
           "announcement": {
             "name": "Announcement Block",
-            "label": "Announcement text to display",
             "settings": {
               "text": {
-                "label": "Annoucement Text"
+                "label": "Announcement bar text"
+              },
+              "announcement_text_bold": {
+                "label": "Make the announcement bold"
+              },
+              "announcement_text_underline": {
+                "label": "Underline the announcement"
               },
               "link": {
-                "label": "Announcement Link"
+                "label": "Add a link to the announcement"
               }
             }
           }

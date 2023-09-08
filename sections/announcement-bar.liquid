@@ -1,22 +1,22 @@
 {% comment %}
-  Announcement Bar
-  The text's appearance may be customized based on settings:
-    - `announcement_text_bold`: Determines if the text should be bold.
-    - `announcement_text_underline`: Determines if the text should be underlined.
-  - If `block.settings.announcement_link` is not empty, the text is wrapped in an anchor`<a>` element with the link.
-  - Else text wrapped in a paragraph `<p>` element.
+  Section: Announcement Bar
+  Info: Displays announcement bar with up to 12 different announcements
+  Script: src/AnnouncementBar.js
 {% endcomment %}
 
-{%- for block in section.blocks -%}
-  {% case block.type %}
-    {% when 'announcement' %}
-      <div
-        x-data="AnnouncementBar"
-        id="announcement"
-        class="bg-primary text-white  items-center justify-center hidden"
-      >
+<div
+  x-data="AnnouncementBar"
+  class="bg-primary text-white flex items-center justify-between"
+>
+  <button class="pl-2" x-on:click="previousAnnouncement">{% render 'icon-chevron-left' %}</button>
+
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {% when 'announcement' %}
         {% if block.settings.announcement_text != blank %}
           <div
+            id="announcement"
+            x-show="current === {{ forloop.index0 }}"
             class="
                uppercase text-xs tracking-widest text-center px-4 py-3
                    {% if block.settings.announcement_text_bold == true %}
@@ -34,9 +34,10 @@
             {% endif %}
           </div>
         {% endif %}
-      </div>
-  {% endcase %}
-{%- endfor -%}
+    {% endcase %}
+  {%- endfor -%}
+  <button class="pr-2" x-on:click="nextAnnouncement">{% render 'icon-chevron-right' %}</button>
+</div>
 
 {% schema %}
 {
@@ -55,13 +56,13 @@
         {
           "type": "checkbox",
           "id": "announcement_text_bold",
-          "label": "Make the nnouncement text bold",
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
           "default": false
         },
         {
           "type": "checkbox",
           "id": "announcement_text_underline",
-          "label": "Add an underline to the Accouncement text",
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_underline.label",
           "default": false
         },
         {

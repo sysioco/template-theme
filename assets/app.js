@@ -3263,23 +3263,20 @@ __webpack_require__.r(__webpack_exports__);
     announcements: [],
     init: function init() {
       var _this = this;
-      // get elements from DOM
-      this.announcements = Array.from(document.querySelectorAll('#announcement'));
-      // set initial state
-      this.announcements[this.current].classList.replace('hidden', 'flex');
-
-      // process elements on interval
+      this.announcements = Array.from(document.querySelectorAll('#announcement')); // get elements from DOM
+      // this.announcements[this.current].classList.replace('hidden', 'flex'); // set initial block state
       setInterval(function () {
-        // Handle current value
-        _this.current = (_this.current + 1) % _this.announcements.length;
-
-        // Handle elements display
-        _this.announcements.forEach(function (element, i) {
-          element.classList.toggle('flex', _this.current === i);
-          element.classList.toggle('hidden', _this.current !== i);
-        });
-      }, 5000 // the duration of the animation
+        return _this.current = (_this.current + 1) % _this.announcements.length;
+      },
+      // change block
+      5000 // the duration of the animation
       );
+    },
+    nextAnnouncement: function nextAnnouncement() {
+      this.current = (this.current + 1) % this.announcements.length;
+    },
+    previousAnnouncement: function previousAnnouncement() {
+      this.current = this.current === 0 ? this.announcements.length - 1 : this.current - 1;
     }
   };
 });
