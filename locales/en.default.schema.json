@@ -22,7 +22,7 @@
           "announcement_bar_background": {
             "label": "Background colour"
           },
-          "chevron_color": {
+          "announcement_bar_cheveron_color": {
             "label": "Chevron colour"
           },
           "announcement_bar_chevron_display": {
