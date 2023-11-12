@@ -15,7 +15,7 @@
   x-data="AnnouncementBar"
   class="
      flex items-center
-    {% if count > 1 %}
+    {% if count > 1 and section.settings.announcement_bar_chevron_display %}
       justify-between
     {% else %}
       justify-center
@@ -23,8 +23,12 @@
   "
   style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;"
 >
-  {% if count > 1 %}
-    <button class="pl-2" style="color: {{  section.settings.chevron_color }}" x-on:click="previousAnnouncement">
+  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+    <button
+      class="pl-2"
+      style="color: {{  section.settings.announcement_bar_cheveron_color }}"
+      x-on:click="previousAnnouncement"
+    >
       {% render 'icon-chevron-left' %}
     </button>
   {% endif %}
@@ -73,8 +77,12 @@
     {% endcase %}
   {%- endfor -%}
 
-  {% if count > 1 %}
-    <button class="pr-2" style="color: {{  section.settings.chevron_color }}" x-on:click="nextAnnouncement">
+  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+    <button
+      class="pr-2"
+      style="color: {{ section.settings.announcement_bar_cheveron_color }}"
+      x-on:click="nextAnnouncement"
+    >
       {% render 'icon-chevron-right' %}
     </button>
   {% endif %}
@@ -84,6 +92,13 @@
 {
   "name": "t:settings_schema.sections.announcement-bar.name",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "announcement_bar_chevron_display",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.label",
+      "default": true,
+      "info": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.info"
+    },
     {
       "type": "range",
       "id": "announcement_bar_font_size",
@@ -96,8 +111,8 @@
     },
     {
       "type": "color",
-      "id": "chevron_color",
-      "label": "t:settings_schema.sections.announcement-bar.settings.chevron_color.label",
+      "id": "announcement_bar_cheveron_color",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_cheveron_color.label",
       "default": "#000"
     },
     {
@@ -128,7 +143,8 @@
           "type": "checkbox",
           "id": "announcement_text_bold",
           "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
-          "default": false
+          "default": false,
+          "info": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.info"
         },
         {
           "type": "url",

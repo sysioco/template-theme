@@ -24,6 +24,10 @@
           },
           "chevron_color": {
             "label": "Chevron colour"
+          },
+          "announcement_bar_chevron_display": {
+            "label": "Show chevron",
+            "info": "Display chevrons to navigate between announcements"
           }
         },
         "blocks": {
@@ -37,7 +41,8 @@
                 "label": "Text colour"
               },
               "announcement_text_bold": {
-                "label": "Make the announcement bold"
+                "label": "Make the announcement bold",
+                "info": "This will make the announcement text bold"
               },
               "announcement_text_underline": {
                 "label": "Underline the announcement"
