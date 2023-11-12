@@ -15,18 +15,26 @@
       },
       "announcement-bar": {
         "name": "Announcement Bar",
+        "settings": {
+          "announcement_bar_font_size": {
+            "label": "Font size"
+          },
+          "announcement_bar_background": {
+            "label": "Background colour"
+          },
+          "chevron_color": {
+            "label": "Chevron colour"
+          }
+        },
         "blocks": {
           "announcement": {
             "name": "Announcement Block",
             "settings": {
-              "announcement_bar_font_size": {
-                "label": "Font size"
-              },
-              "announcement_bar_background": {
-                "label": "Background color"
-              },
               "text": {
                 "label": "Announcement bar text"
+              },
+              "announcement_text_color": {
+                "label": "Text colour"
               },
               "announcement_text_bold": {
                 "label": "Make the announcement bold"
