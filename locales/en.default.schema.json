@@ -19,6 +19,12 @@
           "announcement": {
             "name": "Announcement Block",
             "settings": {
+              "announcement_bar_font_size": {
+                "label": "Font size"
+              },
+              "announcement_bar_background": {
+                "label": "Background color"
+              },
               "text": {
                 "label": "Announcement bar text"
               },

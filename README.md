@@ -17,3 +17,4 @@ This repo features a basic shopify template theme which implements Tailwind CSS 
 
 ### Usage
 
+npx mix watch

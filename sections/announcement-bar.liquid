@@ -4,11 +4,25 @@
   Script: src/AnnouncementBar.js
 {% endcomment %}
 
+{% assign count = 0 %}
+{% for block in section.blocks %}
+  {% assign count = count | plus: 1 %}
+{% endfor %}
+
 <div
   x-data="AnnouncementBar"
-  class="bg-primary text-white flex items-center justify-between"
+  class="
+    bg-primary text-white flex items-center
+    {% if count > 1 %}
+      justify-between
+    {% else %}
+      justify-center
+    {% endif %}
+  "
 >
-  <button class="pl-2" x-on:click="previousAnnouncement">{% render 'icon-chevron-left' %}</button>
+  {% if count > 1 %}
+    <button class="pl-2" x-on:click="previousAnnouncement">{% render 'icon-chevron-left' %}</button>
+  {% endif %}
 
   {%- for block in section.blocks -%}
     {% case block.type %}
@@ -17,8 +31,11 @@
           <div
             id="announcement"
             x-show="current === {{ forloop.index0 }}"
+            x-transition:enter="transition ease-in duration-500"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
             class="
-               uppercase text-xs tracking-widest text-center px-4 py-3
+               uppercase tracking-widest text-center px-4 py-3
                    {% if block.settings.announcement_text_bold == true %}
                   font-bold
                 {% endif %}
@@ -28,20 +45,48 @@
             "
           >
             {% if block.settings.announcement_link != blank %}
-              <a href="{{ block.settings.announcement_link }}">{{ block.settings.announcement_text }}</a>
+              <a
+                style="font-size: {{ section.settings.announcement_bar_font_size }}px;"
+                href="{{ block.settings.announcement_link }}"
+              >
+                {{- block.settings.announcement_text -}}
+              </a>
             {% else %}
-              <p>{{ block.settings.announcement_text }}</p>
+              <p style="font-size: {{ section.settings.announcement_bar_font_size }}px;">
+                {{ block.settings.announcement_text }}
+              </p>
             {% endif %}
           </div>
         {% endif %}
     {% endcase %}
   {%- endfor -%}
-  <button class="pr-2" x-on:click="nextAnnouncement">{% render 'icon-chevron-right' %}</button>
+
+  {% if count > 1 %}
+    <button class="pr-2" x-on:click="nextAnnouncement">{% render 'icon-chevron-right' %}</button>
+  {% endif %}
 </div>
 
 {% schema %}
 {
   "name": "t:settings_schema.sections.announcement-bar.name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "announcement_bar_font_size",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_font_size.label",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color_background",
+      "id": "announcement_bar_background",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_background.label",
+      "default": "#000"
+    }
+  ],
   "max_blocks": 12,
   "blocks": [
     {
