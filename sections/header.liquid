@@ -7,6 +7,19 @@
 %}
 
 <header id="header" class="header">
+  {% comment %} Logo {% endcomment %}
+
+  {{ settings.logo | asset_img_url }}
+
+  <a href="{{ routes.home_url }}" class="logo">
+    {% if settings.logo != blank %}
+      <img src="{{ settings.logo | asset_img_url }}" alt="{{ shop.name }}" loading="lazy" height="50" width="50">
+    {% else %}
+      {{ shop.name }}
+    {% endif %}
+  </a>
+
+  {% comment %} Navigation {% endcomment %}
   <nav role="navigation">
     {% for link in main_menu_linklist %}
       {% if link.links != blank %}
@@ -18,11 +31,13 @@
         <a href="{{ link.url }}">{{ link.title }}</a>
       {% endif %}
     {% endfor %}
-    <form action="{{ routes.search_url }}" method="get">
-      <input type="search" name="q" placeholder="Search">
-      <button type="submit">Search</button>
-    </form>
   </nav>
+
+  {% comment %} Search form {% endcomment %}
+  <form action="{{ routes.search_url }}" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">Search</button>
+  </form>
 </header>
 
 {% schema %}

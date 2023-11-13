@@ -4,24 +4,33 @@
   Script: src/AnnouncementBar.js
 {% endcomment %}
 
-{% assign count = 0 %}
-{% for block in section.blocks %}
-  {% assign count = count | plus: 1 %}
-{% endfor %}
+{% liquid
+  assign count = 0
+  for block in section.blocks
+    assign count = count | plus: 1
+  endfor
+%}
 
 <div
   x-data="AnnouncementBar"
   class="
-    bg-primary text-white flex items-center
-    {% if count > 1 %}
+     flex items-center
+    {% if count > 1 and section.settings.announcement_bar_chevron_display %}
       justify-between
     {% else %}
       justify-center
     {% endif %}
   "
+  style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;"
 >
-  {% if count > 1 %}
-    <button class="pl-2" x-on:click="previousAnnouncement">{% render 'icon-chevron-left' %}</button>
+  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+    <button
+      class="pl-2"
+      style="color: {{  section.settings.announcement_bar_cheveron_color }}"
+      x-on:click="previousAnnouncement"
+    >
+      {% render 'icon-chevron-left' %}
+    </button>
   {% endif %}
 
   {%- for block in section.blocks -%}
@@ -35,24 +44,31 @@
             x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100"
             class="
-               uppercase tracking-widest text-center px-4 py-3
-                   {% if block.settings.announcement_text_bold == true %}
-                  font-bold
-                {% endif %}
-                {% if block.settings.announcement_text_underline == true %}
-                underline
+                             uppercase tracking-widest text-center px-4 py-3
+                 {% if block.settings.announcement_text_bold == true %}
+                font-bold
               {% endif %}
             "
           >
             {% if block.settings.announcement_link != blank %}
               <a
-                style="font-size: {{ section.settings.announcement_bar_font_size }}px;"
+                style="
+                  font-size: {{ section.settings.announcement_bar_font_size }}px;
+                  color: {{ block.settings.announcement_text_color }};
+                  text-decoration-color: {{ block.settings.announcement_text_color }};
+                "
                 href="{{ block.settings.announcement_link }}"
               >
                 {{- block.settings.announcement_text -}}
               </a>
             {% else %}
-              <p style="font-size: {{ section.settings.announcement_bar_font_size }}px;">
+              <p
+                style="
+                  font-size: {{ section.settings.announcement_bar_font_size }}px;
+                  color: {{ block.settings.announcement_text_color }};
+                  text-decoration-color: {{ block.settings.announcement_text_color }};
+                "
+              >
                 {{ block.settings.announcement_text }}
               </p>
             {% endif %}
@@ -61,8 +77,14 @@
     {% endcase %}
   {%- endfor -%}
 
-  {% if count > 1 %}
-    <button class="pr-2" x-on:click="nextAnnouncement">{% render 'icon-chevron-right' %}</button>
+  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+    <button
+      class="pr-2"
+      style="color: {{ section.settings.announcement_bar_cheveron_color }}"
+      x-on:click="nextAnnouncement"
+    >
+      {% render 'icon-chevron-right' %}
+    </button>
   {% endif %}
 </div>
 
@@ -70,6 +92,19 @@
 {
   "name": "t:settings_schema.sections.announcement-bar.name",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "announcement_bar_chevron_display",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.label",
+      "default": true,
+      "info": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.info"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bar_cheveron_color",
+      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_cheveron_color.label",
+      "default": "#fff"
+    },
     {
       "type": "range",
       "id": "announcement_bar_font_size",
@@ -81,10 +116,10 @@
       "default": 12
     },
     {
-      "type": "color_background",
+      "type": "color",
       "id": "announcement_bar_background",
       "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_background.label",
-      "default": "#000"
+      "default": "#333333"
     }
   ],
   "max_blocks": 12,
@@ -99,16 +134,17 @@
           "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.text.label"
         },
         {
-          "type": "checkbox",
-          "id": "announcement_text_bold",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
-          "default": false
+          "type": "color",
+          "id": "announcement_text_color",
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_color.label",
+          "default": "#fff"
         },
         {
           "type": "checkbox",
-          "id": "announcement_text_underline",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_underline.label",
-          "default": false
+          "id": "announcement_text_bold",
+          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
+          "default": false,
+          "info": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.info"
         },
         {
           "type": "url",

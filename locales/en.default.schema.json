@@ -15,21 +15,34 @@
       },
       "announcement-bar": {
         "name": "Announcement Bar",
+        "settings": {
+          "announcement_bar_font_size": {
+            "label": "Font size"
+          },
+          "announcement_bar_background": {
+            "label": "Background colour"
+          },
+          "announcement_bar_cheveron_color": {
+            "label": "Chevron colour"
+          },
+          "announcement_bar_chevron_display": {
+            "label": "Show chevron",
+            "info": "Display chevrons to navigate between announcements"
+          }
+        },
         "blocks": {
           "announcement": {
             "name": "Announcement Block",
             "settings": {
-              "announcement_bar_font_size": {
-                "label": "Font size"
-              },
-              "announcement_bar_background": {
-                "label": "Background color"
-              },
               "text": {
                 "label": "Announcement bar text"
               },
+              "announcement_text_color": {
+                "label": "Text colour"
+              },
               "announcement_text_bold": {
-                "label": "Make the announcement bold"
+                "label": "Make the announcement bold",
+                "info": "This will make the announcement text bold"
               },
               "announcement_text_underline": {
                 "label": "Underline the announcement"

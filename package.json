@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/sysioco/template-theme#readme",
   "devDependencies": {
-    "daisyui": "^3.6.4",
     "laravel-mix": "^6.0.49",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.66.1",
