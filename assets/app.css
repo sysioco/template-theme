@@ -1552,10 +1552,6 @@ html {
 .justify-between {
   justify-content: space-between;
 }
-.bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--p) / var(--tw-bg-opacity));
-}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1573,10 +1569,6 @@ html {
 .text-center {
   text-align: center;
 }
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
 .font-bold {
   font-weight: 700;
 }
@@ -1585,10 +1577,6 @@ html {
 }
 .tracking-widest {
   letter-spacing: 0.1em;
-}
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -1612,3 +1600,4 @@ html {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+
