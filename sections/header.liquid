@@ -1,29 +1,14 @@
-{% liquid
-  if section.settings.menu.links == blank
-    assign main_menu_linklist = linklists[section.settings.menu].links
-  else
-    assign main_menu_linklist = section.settings.menu.links
-  endif
-%}
+<header id="header">
+  {% render 'navigation-logo' %}
 
-<header id="header" class="header">
-  {% comment %} Logo {% endcomment %}
+  {% render 'navigation-account' %}
 
-  {{ settings.logo | asset_img_url }}
-
-  <a href="{{ routes.home_url }}" class="logo">
-    {% if settings.logo != blank %}
-      <img src="{{ settings.logo | asset_img_url }}" alt="{{ shop.name }}" loading="lazy" height="50" width="50">
-    {% else %}
-      {{ shop.name }}
-    {% endif %}
-  </a>
+  {% render 'navigation-search' %}
 
   {% comment %} Navigation {% endcomment %}
   <nav role="navigation">
-    {% for link in main_menu_linklist %}
+    {% for link in section.settings.menu.links %}
       {% if link.links != blank %}
-        {% assign link_handle = link.handle | replace: '-', '_' %}
         {% for childlink in link.links %}
           <a href="{{ childlink.url }}">{{ childlink.title }}</a>
         {% endfor %}
@@ -32,12 +17,6 @@
       {% endif %}
     {% endfor %}
   </nav>
-
-  {% comment %} Search form {% endcomment %}
-  <form action="{{ routes.search_url }}" method="get">
-    <input type="search" name="q" placeholder="Search">
-    <button type="submit">Search</button>
-  </form>
 </header>
 
 {% schema %}
@@ -49,6 +28,23 @@
       "id": "menu",
       "default": "main-menu",
       "label": "Heading Navigation Menu"
+    },
+    {
+      "type": "select",
+      "id": "header_nav_type",
+      "label": "Select the type of navigation to display",
+      "default": "megamenu",
+      "info": "Toggle between megamenu and burger menu",
+      "options": [
+        {
+          "value": "megamenu",
+          "label": "Mega Menu"
+        },
+        {
+          "value": "burger menu",
+          "label": "Burger Menu"
+        }
+      ]
     }
   ]
 }

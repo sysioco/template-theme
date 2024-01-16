@@ -1,0 +1,14 @@
+{% comment %} Logo {% endcomment %}
+<a href="{{ routes.home_url }}">
+  {% if settings.logo != blank %}
+    <img
+      src="{{ settings.logo |  image_url  }}"
+      alt="{{ shop.name }}"
+      loading="lazy"
+      height="50"
+      width="50"
+    >
+  {% else %}
+    {{ shop.name }}
+  {% endif %}
+</a>

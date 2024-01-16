@@ -1,7 +1,7 @@
 <!doctype html>
 {% comment %}
   Theme: Cupcake
-  Developer: Sysio
+  Developer: Derek George
   Date: 04/09/2023
 {% endcomment %}
 <html lang="{{ request.locale.iso_code }}" data-theme="cupcake">
@@ -14,9 +14,9 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    {% comment %} Laravel Mix Processed Assets {% endcomment %}
-    <link rel="stylesheet" href="{{ 'app.css' | asset_url }}">
-    <script src="{{ 'app.js' | asset_url }}" defer></script>
+    {% comment %} Sysio processed Assets {% endcomment %}
+    <link rel="stylesheet" href="{{ 'sysio.css' | asset_url }}">
+    <script src="{{ 'sysio.js' | asset_url }}" defer></script>
     {% comment %} END {% endcomment %}
 
     {%- if settings.favicon != blank -%}
