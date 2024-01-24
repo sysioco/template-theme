@@ -21,14 +21,9 @@
       justify-center
     {% endif %}
   "
-  style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;"
->
+  style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;">
   {% if count > 1 and section.settings.announcement_bar_chevron_display %}
-    <button
-      class="pl-2"
-      style="color: {{  section.settings.announcement_bar_cheveron_color }}"
-      x-on:click="previousAnnouncement"
-    >
+    <button class="pl-2" style="color: {{  section.settings.announcement_bar_cheveron_color }}">
       {% render 'icon-chevron-left' %}
     </button>
   {% endif %}
@@ -37,38 +32,25 @@
     {% case block.type %}
       {% when 'announcement' %}
         {% if block.settings.announcement_text != blank %}
-          <div
-            id="announcement"
-            x-show="current === {{ forloop.index0 }}"
-            x-transition:enter="transition ease-in duration-500"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            class="
-                             uppercase tracking-widest text-center px-4 py-3
+          <div id="announcement" class="uppercase tracking-widest text-center px-4 py-3
                  {% if block.settings.announcement_text_bold == true %}
                 font-bold
               {% endif %}
-            "
-          >
+            ">
             {% if block.settings.announcement_link != blank %}
-              <a
-                style="
+              <a style="
                   font-size: {{ section.settings.announcement_bar_font_size }}px;
                   color: {{ block.settings.announcement_text_color }};
                   text-decoration-color: {{ block.settings.announcement_text_color }};
-                "
-                href="{{ block.settings.announcement_link }}"
-              >
+                " href="{{ block.settings.announcement_link }}">
                 {{- block.settings.announcement_text -}}
               </a>
             {% else %}
-              <p
-                style="
+              <p style="
                   font-size: {{ section.settings.announcement_bar_font_size }}px;
                   color: {{ block.settings.announcement_text_color }};
                   text-decoration-color: {{ block.settings.announcement_text_color }};
-                "
-              >
+                ">
                 {{ block.settings.announcement_text }}
               </p>
             {% endif %}
@@ -78,81 +60,77 @@
   {%- endfor -%}
 
   {% if count > 1 and section.settings.announcement_bar_chevron_display %}
-    <button
-      class="pr-2"
-      style="color: {{ section.settings.announcement_bar_cheveron_color }}"
-      x-on:click="nextAnnouncement"
-    >
+    <button class="pr-2" style="color: {{ section.settings.announcement_bar_cheveron_color }}">
       {% render 'icon-chevron-right' %}
     </button>
   {% endif %}
 </div>
 
 {% schema %}
-{
-  "name": "t:settings_schema.sections.announcement-bar.name",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "announcement_bar_chevron_display",
-      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.label",
-      "default": true,
-      "info": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.info"
-    },
-    {
-      "type": "color",
-      "id": "announcement_bar_cheveron_color",
-      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_cheveron_color.label",
-      "default": "#fff"
-    },
-    {
-      "type": "range",
-      "id": "announcement_bar_font_size",
-      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_font_size.label",
-      "min": 10,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "color",
-      "id": "announcement_bar_background",
-      "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_background.label",
-      "default": "#333333"
-    }
-  ],
-  "max_blocks": 12,
-  "blocks": [
-    {
-      "type": "announcement",
-      "name": "t:settings_schema.sections.announcement-bar.blocks.announcement.name",
-      "settings": [
-        {
-          "type": "text",
-          "id": "announcement_text",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.text.label"
-        },
-        {
-          "type": "color",
-          "id": "announcement_text_color",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_color.label",
-          "default": "#fff"
-        },
-        {
-          "type": "checkbox",
-          "id": "announcement_text_bold",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
-          "default": false,
-          "info": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.info"
-        },
-        {
-          "type": "url",
-          "id": "announcement_link",
-          "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.link.label"
-        }
-      ]
-    }
-  ]
-}
+  {
+    "name": "t:settings_schema.sections.announcement-bar.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_chevron_display",
+        "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.label",
+        "default": true,
+        "info": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_chevron_display.info"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_cheveron_color",
+        "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_cheveron_color.label",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "announcement_bar_font_size",
+        "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_font_size.label",
+        "min": 10,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_background",
+        "label": "t:settings_schema.sections.announcement-bar.settings.announcement_bar_background.label",
+        "default": "#333333"
+      }
+    ],
+    "max_blocks": 12,
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "t:settings_schema.sections.announcement-bar.blocks.announcement.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "announcement_text",
+            "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.text.label"
+          },
+          {
+            "type": "color",
+            "id": "announcement_text_color",
+            "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_color.label",
+            "default": "#fff"
+          },
+          {
+            "type": "checkbox",
+            "id": "announcement_text_bold",
+            "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.label",
+            "default": false,
+            "info": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.announcement_text_bold.info"
+          },
+          {
+            "type": "url",
+            "id": "announcement_link",
+            "label": "t:settings_schema.sections.announcement-bar.blocks.announcement.settings.link.label"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

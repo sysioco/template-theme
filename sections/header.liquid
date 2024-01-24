@@ -1,51 +1,73 @@
-<header id="header">
-  {% render 'navigation-logo' %}
+<header class="h-20 px-5 flex items-center justify-between header">
+  {% render 'header-logo' %}
 
-  {% render 'navigation-account' %}
-
-  {% render 'navigation-search' %}
-
-  {% comment %} Navigation {% endcomment %}
-  <nav role="navigation">
+  {% comment %} Navigation Menu {% endcomment %}
+  <nav class="relative">
     {% for link in section.settings.menu.links %}
-      {% if link.links != blank %}
-        {% for childlink in link.links %}
-          <a href="{{ childlink.url }}">{{ childlink.title }}</a>
-        {% endfor %}
+      <div class="flex justify-between gap-10">
+        {% if link.links != blank %}
+          <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
+          <div class="absolute top-[52px] p-5 bg-white border">
+            <ul class="flex flex-col gap-5">
+              {% for childlink in link.links %}
+                <li>
+                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+  
+            <div class="  mt-5 suggested-menu-items">
+              <h3>Suggested Menu Item</h3>
+              <ul>
+                <li>Item</li>
+              </ul>
+            </div>
+          </div>
+      </div>
       {% else %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
       {% endif %}
     {% endfor %}
   </nav>
+
+  {% comment %} Navigation Quick Links {% endcomment %}
+  <div class="flex align-item gap-1">
+    {% render 'header-search' %}
+    {% render 'header-account' %}
+    {% render 'header-cart' %}
+  </div>
 </header>
 
+<div id="search-bar"></div>
+
+
 {% schema %}
-{
-  "name": "t:settings_schema.sections.header.name",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "default": "main-menu",
-      "label": "Heading Navigation Menu"
-    },
-    {
-      "type": "select",
-      "id": "header_nav_type",
-      "label": "Select the type of navigation to display",
-      "default": "megamenu",
-      "info": "Toggle between megamenu and burger menu",
-      "options": [
-        {
-          "value": "megamenu",
-          "label": "Mega Menu"
-        },
-        {
-          "value": "burger menu",
-          "label": "Burger Menu"
-        }
-      ]
-    }
-  ]
-}
+  {
+    "name": "t:settings_schema.sections.header.name",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "Heading Navigation Menu"
+      },
+      {
+        "type": "select",
+        "id": "header_nav_type",
+        "label": "Select the type of navigation to display",
+        "default": "megamenu",
+        "info": "Toggle between megamenu and burger menu",
+        "options": [
+          {
+            "value": "megamenu",
+            "label": "Mega Menu"
+          },
+          {
+            "value": "burger menu",
+            "label": "Burger Menu"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
