@@ -54,11 +54,15 @@
 
     {{ content_for_header }}
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
+
     {% sections 'header-group' %}
-    <main>
+
+    <main class="flex-1">
       {{ content_for_layout }}
     </main>
-  {% comment %} {% section 'footer' %} {% endcomment %}
+
+    {% section 'footer' %}
+
   </body>
 </html>

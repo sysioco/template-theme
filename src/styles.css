@@ -7,18 +7,22 @@
   --secondary-bg: #333;
 }
 
-/* Header */
-.header {
+/* Header & Footer */
+header,
+footer {
   background: var(--primary-bg);
 
-  a {
+  * {
     color: var(--secondary-bg);
   }
 }
 
+/* Header Menu */
 .suggested-menu-items {
   color: var(--secondary-bg);
 }
+
+/* Footer MEnu*/
 
 /* Icons */
 svg {

@@ -1,18 +1,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
+/***/ "./src/script.js":
+/*!***********************!*\
+  !*** ./src/script.js ***!
+  \***********************/
 /***/ (() => {
 
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+/**
+ * DropdownMenu
+ * Controls the Dropdown display when item is mousedover, or when mouse leaves menu area
+ */
 var DropdownMenu = /*#__PURE__*/function () {
   function DropdownMenu(menuItemElement) {
     _classCallCheck(this, DropdownMenu);
@@ -52,12 +57,31 @@ menuItems.forEach(function (menuItem) {
   new DropdownMenu(menuItem);
 });
 
+/**
+ * MobileMenu
+ * toggles the display on mobile
+ */
+var MobileMenu = /*#__PURE__*/_createClass(function MobileMenu() {
+  var _this2 = this;
+  _classCallCheck(this, MobileMenu);
+  _defineProperty(this, "toggleMenu", function () {
+    var isOpen = _this2.menuNav.classList.toggle('mobile-open');
+    _this2.dropdownMenu.classList.toggle('hidden', !isOpen); // Toggle `hidden` based on `isOpen`
+    _this2.menuNav.querySelector('span').textContent = isOpen ? 'Close' : 'Menu';
+  });
+  this.menuNav = document.querySelector('#mobile-menu');
+  this.dropdownMenu = document.querySelector('#mobile-dropdown');
+  this.menuNav.addEventListener('click', this.toggleMenu); // Attach listener directly
+}); // MOBILE MENU: Initialize the class for mobile menu
+
+new MobileMenu();
+
 /***/ }),
 
-/***/ "./src/app.css":
-/*!*********************!*\
-  !*** ./src/app.css ***!
-  \*********************/
+/***/ "./src/styles.css":
+/*!************************!*\
+  !*** ./src/styles.css ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -204,8 +228,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/script.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/styles.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,18 +1,30 @@
-<header class="h-20 px-5 flex items-center justify-between header">
+<header class="h-20 px-5 flex items-center justify-between relative">
   {% render 'header-logo' %}
 
-  {% comment %} Navigation Menu {% endcomment %}
-  <nav class="relative flex justify-between gap-10">
+  {% comment %} Navigation Menu [Desktop] {% endcomment %}
+  <nav class="relative hidden lg:flex justify-between gap-10 ">
     {% for link in section.settings.menu.links %}
       {% if link.links != blank %}
         <div id="menu-item">
           <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
-          <div id="dropdown-menu" class="absolute top-[52px] p-5 bg-white border hidden">
+          <div id="dropdown-menu" class="absolute top-[52px] left-0 w-full z-10 p-5 bg-white border hidden">
             <ul class="flex flex-col gap-5">
               {% for childlink in link.links %}
-                <li>
-                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                </li>
+                {% if childlink.links != blank %}
+                  <a href="{{ childlink.url }}" class="font-bold">{{ childlink.title | escape }}</a>
+                  <ul class="flex flex-col gap-5">
+                    {% for grandchildlink in childlink.links %}
+                      <li>
+                        <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <li>
+                    <a class="font-bold" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+
+                {% endif %}
               {% endfor %}
             </ul>
           </div>
@@ -24,14 +36,67 @@
   </nav>
 
   {% comment %} Navigation Quick Links {% endcomment %}
-  <div class="flex align-item gap-1">
+  <div class="hidden lg:flex align-item gap-1">
     {% render 'header-search' %}
     {% render 'header-account' %}
     {% render 'header-cart' %}
   </div>
+
+  {% comment %} Navigation Menu Selector [Mobile & Tablet] {% endcomment %}
+    <div id="mobile-menu" class="block lg:hidden">
+      <span class="font-bold">Menu</span>
+    </div>
+  </nav>
 </header>
 
-<div id="search-bar"></div>
+ {% comment %} Navigation Men u [Mobile & Tablet] {% endcomment %}
+<nav class="lg:hidden block w-full h-full relative">
+  <div id="mobile-dropdown" class="w-full p-5 absolute top-0 bottom-0 bg-white z-10 hidden">
+    {% comment %} Navigation Quick Links {% endcomment %}
+    <div class="flex align-item gap-1">
+      {% render 'header-search' %}
+      {% render 'header-account' %}
+      {% render 'header-cart' %}
+    </div>
+    {% comment %} Mobile Menu Navigation {% endcomment %}
+    <div>
+      {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+          <div>
+            <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
+            <div>
+              <ul>
+                {% for childlink in link.links %}
+                  {% if childlink.links != blank %}
+                    <a href="{{ childlink.url }}" class="font-bold">{{ childlink.title | escape }}</a>
+                    <ul>
+                      {% for grandchildlink in childlink.links %}
+                        <li>
+                          <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <li>
+                      <a class="font-bold" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </li>
+  
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% else %}
+          <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</nav>
+
+<div id="search-bar">
+  <div></div>
+</div>
 
 
 {% schema %}

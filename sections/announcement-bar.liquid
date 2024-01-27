@@ -11,22 +11,19 @@
   endfor
 %}
 
-<div
-  x-data="AnnouncementBar"
-  class="
-     flex items-center
+<div class="flex items-center
     {% if count > 1 and section.settings.announcement_bar_chevron_display %}
       justify-between
     {% else %}
       justify-center
     {% endif %}
-  "
-  style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;">
-  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
-    <button class="pl-2" style="color: {{  section.settings.announcement_bar_cheveron_color }}">
-      {% render 'icon-chevron-left' %}
-    </button>
-  {% endif %}
+  " style="background-color: {{ section.settings.announcement_bar_background }}; min-height: 50px;">
+
+  {% comment %} {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+        <button class="pl-2" style="color: {{  section.settings.announcement_bar_cheveron_color }}">
+          {% render 'icon-chevron-left' %}
+        </button>
+    {% endif %} {% endcomment %}
 
   {%- for block in section.blocks -%}
     {% case block.type %}
@@ -59,11 +56,11 @@
     {% endcase %}
   {%- endfor -%}
 
-  {% if count > 1 and section.settings.announcement_bar_chevron_display %}
-    <button class="pr-2" style="color: {{ section.settings.announcement_bar_cheveron_color }}">
-      {% render 'icon-chevron-right' %}
-    </button>
-  {% endif %}
+{% comment %} {% if count > 1 and section.settings.announcement_bar_chevron_display %}
+      <button class="pr-2" style="color: {{ section.settings.announcement_bar_cheveron_color }}">
+        {% render 'icon-chevron-right' %}
+      </button>
+  {% endif %} {% endcomment %}
 </div>
 
 {% schema %}

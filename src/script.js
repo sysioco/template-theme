@@ -1,3 +1,7 @@
+/**
+ * DropdownMenu
+ * Controls the Dropdown display when item is mousedover, or when mouse leaves menu area
+ */
 class DropdownMenu {
   constructor(menuItemElement) {
     this.menuItem = menuItemElement;
@@ -36,3 +40,24 @@ const menuItems = document.querySelectorAll('#menu-item');
 menuItems.forEach((menuItem) => {
   new DropdownMenu(menuItem);
 });
+
+/**
+ * MobileMenu
+ * toggles the display on mobile
+ */
+class MobileMenu {
+  constructor() {
+    this.menuNav = document.querySelector('#mobile-menu');
+    this.dropdownMenu = document.querySelector('#mobile-dropdown');
+    this.menuNav.addEventListener('click', this.toggleMenu); // Attach listener directly
+  }
+
+  toggleMenu = () => {
+    const isOpen = this.menuNav.classList.toggle('mobile-open');
+    this.dropdownMenu.classList.toggle('hidden', !isOpen); // Toggle `hidden` based on `isOpen`
+    this.menuNav.querySelector('span').textContent = isOpen ? 'Close' : 'Menu';
+  };
+}
+
+// MOBILE MENU: Initialize the class for mobile menu
+new MobileMenu();
