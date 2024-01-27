@@ -2,12 +2,12 @@
   {% render 'header-logo' %}
 
   {% comment %} Navigation Menu {% endcomment %}
-  <nav class="relative">
+  <nav class="relative flex justify-between gap-10">
     {% for link in section.settings.menu.links %}
-      <div class="flex justify-between gap-10">
-        {% if link.links != blank %}
+      {% if link.links != blank %}
+        <div id="menu-item">
           <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
-          <div class="absolute top-[52px] p-5 bg-white border">
+          <div id="dropdown-menu" class="absolute top-[52px] p-5 bg-white border hidden">
             <ul class="flex flex-col gap-5">
               {% for childlink in link.links %}
                 <li>
@@ -15,15 +15,8 @@
                 </li>
               {% endfor %}
             </ul>
-  
-            <div class="  mt-5 suggested-menu-items">
-              <h3>Suggested Menu Item</h3>
-              <ul>
-                <li>Item</li>
-              </ul>
-            </div>
           </div>
-      </div>
+        </div>
       {% else %}
         <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
       {% endif %}

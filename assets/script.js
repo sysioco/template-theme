@@ -7,7 +7,50 @@
   \********************/
 /***/ (() => {
 
-console.log('webpack');
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var DropdownMenu = /*#__PURE__*/function () {
+  function DropdownMenu(menuItemElement) {
+    _classCallCheck(this, DropdownMenu);
+    this.menuItem = menuItemElement;
+    this.dropdownMenu = this.menuItem.querySelector('#dropdown-menu');
+    this.isHoveringDropdown = false;
+    this.addEventListeners();
+  }
+  _createClass(DropdownMenu, [{
+    key: "addEventListeners",
+    value: function addEventListeners() {
+      var _this = this;
+      this.menuItem.addEventListener('mouseover', function () {
+        _this.dropdownMenu.classList.remove('hidden');
+        _this.isHoveringDropdown = true;
+      });
+      this.menuItem.addEventListener('mouseout', function () {
+        _this.isHoveringDropdown = false;
+        setTimeout(function () {
+          if (!_this.isHoveringDropdown) {
+            _this.dropdownMenu.classList.add('hidden');
+          }
+        }, 100);
+      });
+      var otherMenuItems = document.querySelectorAll('#menu-item:not(#' + this.menuItem.id + ')');
+      otherMenuItems.forEach(function (otherMenuItem) {
+        otherMenuItem.addEventListener('mouseover', function () {
+          _this.dropdownMenu.classList.add('hidden');
+        });
+      });
+    }
+  }]);
+  return DropdownMenu;
+}(); // DROPDOWN MENU: Initialize the class for each menu item
+var menuItems = document.querySelectorAll('#menu-item');
+menuItems.forEach(function (menuItem) {
+  new DropdownMenu(menuItem);
+});
 
 /***/ }),
 
@@ -110,8 +153,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/assets/sysio": 0,
-/******/ 			"assets/sysio": 0
+/******/ 			"/assets/script": 0,
+/******/ 			"assets/styles": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -161,8 +204,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/sysio"], () => (__webpack_require__("./src/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/sysio"], () => (__webpack_require__("./src/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/styles"], () => (__webpack_require__("./src/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
