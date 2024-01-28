@@ -12,7 +12,7 @@ header,
 footer {
   background: var(--primary-bg);
 
-  * {
+  a {
     color: var(--secondary-bg);
   }
 }
@@ -22,7 +22,13 @@ footer {
   color: var(--secondary-bg);
 }
 
-/* Footer MEnu*/
+/* Footer Menu*/
+.copyright {
+  background: var(--secondary-bg);
+  span {
+    color: white !important;
+  }
+}
 
 /* Icons */
 svg {

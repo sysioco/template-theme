@@ -491,20 +491,17 @@ video {
 .relative {
   position: relative;
 }
-.left-0 {
-  left: 0px;
-}
-.top-\[52px\] {
-  top: 52px;
-}
-.right-0 {
-  right: 0px;
-}
 .bottom-0 {
   bottom: 0px;
 }
+.left-0 {
+  left: 0px;
+}
 .top-0 {
   top: 0px;
+}
+.top-\[52px\] {
+  top: 52px;
 }
 .z-10 {
   z-index: 10;
@@ -518,6 +515,9 @@ video {
 .table {
   display: table;
 }
+.grid {
+  display: grid;
+}
 .hidden {
   display: none;
 }
@@ -526,9 +526,6 @@ video {
 }
 .h-6 {
   height: 1.5rem;
-}
-.h-screen {
-  height: 100vh;
 }
 .h-full {
   height: 100%;
@@ -542,14 +539,32 @@ video {
 .w-full {
   width: 100%;
 }
+.w-\[500px\] {
+  width: 500px;
+}
 .flex-1 {
   flex: 1 1 0%;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .items-center {
   align-items: center;
@@ -560,6 +575,9 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.justify-evenly {
+  justify-content: space-evenly;
+}
 .gap-1 {
   gap: 0.25rem;
 }
@@ -569,8 +587,8 @@ video {
 .gap-5 {
   gap: 1.25rem;
 }
-.overflow-hidden {
-  overflow: hidden;
+.gap-2 {
+  gap: 0.5rem;
 }
 .border {
   border-width: 1px;
@@ -579,12 +597,11 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
 .p-5 {
   padding: 1.25rem;
+}
+.p-2 {
+  padding: 0.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -597,6 +614,14 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .pl-2 {
   padding-left: 0.5rem;
@@ -630,7 +655,7 @@ header,
 footer {
   background: var(--primary-bg);
 
-  * {
+  a {
     color: var(--secondary-bg);
   }
 }
@@ -640,7 +665,13 @@ footer {
   color: var(--secondary-bg);
 }
 
-/* Footer MEnu*/
+/* Footer Menu*/
+.copyright {
+  background: var(--secondary-bg);
+  span {
+    color: white !important;
+  }
+}
 
 /* Icons */
 svg {
@@ -650,16 +681,24 @@ svg {
 }
 @media (min-width: 1024px) {
 
-  .lg\:block {
-    display: block;
-  }
-
   .lg\:flex {
     display: flex;
   }
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:flex-row {
+    flex-direction: row;
   }
 }
 

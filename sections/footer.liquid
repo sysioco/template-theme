@@ -1,23 +1,78 @@
-<footer class="p-5 items-center justify-between">
-  {% comment %} Main Footer Block {% endcomment %}
-  <div class="flex flex-row justify-between">
-    {% comment %} Newsletter {% endcomment %}
-    <div>Logo</div>
+{% comment %} Newsletter {% endcomment %}
+<div class="newsletter"></div>
+
+<footer>
+  <div class="flex lg:flex-row flex-col justify-between gap-5 p-5">
+    <div class="flex lg:flex-row flex-col gap-5">
+      {% comment %} Main Footer Block {% endcomment %}
+
+      <div>
+        {% render 'header-logo' %}
+      </div>
+
+      {% comment %} COntact Information {% endcomment %}
+      <div class="flex flex-col">
+        <a href="/contact" class="font-bold">{{ shop.name }}</a>
+        {% if shop.address %}
+          <div>
+            <p>{{ shop.address.address1 }}</p>
+            <p>{{ shop.address.address2 }}</p>
+            <p>{{ shop.city }}</p>
+            <p>{{ shop.address.zip }}</p>
+          </div>
+        {% endif %}
+        {% if shop.email %}
+          <p>{{ shop.email }}</p>
+        {% endif %}
+        {% if shop.phone %}
+          <p>{{ shop.phone }}</p>
+        {% endif %}
+      </div>
+    </div>
 
     {% comment %} Navigation Items {% endcomment %}
-    <nav>
-      <ul>
-        <li>Footer item</li>
-      </ul>
+    <nav class="grid lg:grid-rows-4 lg:grid-cols-3 grid-cols-1 justify-center gap-2">
+      {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+          <ul>
+            <li>
+              <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
+            </li>
+          </ul>
+        {% else %}
+          <a href="{{ link.url }}" class="font-bold">{{ link.title | escape }}</a>
+        {% endif %}
+
+      {% endfor %}
     </nav>
   </div>
 
   {% comment %} Additional Footer Content {% endcomment %}
-  <div>
-    {% comment %} Payment and Socials {% endcomment %}
-    <div>Payment & socials</div>
-
+  <div class="copyright px-5 py-2 flex items-center lg:flex-row flex-col justify-between">
     {% comment %} Copyright {% endcomment %}
-    <div>Copy</div>
+    <div>
+      <span>&copy; {{ "now" | date: "%Y" }} Bin Solutions</span>
+    </div>
+    {% comment %} Social Media Partners {% endcomment %}
+    <div class="flex">
+      {% render 'icon-social-x' %}
+      {% render 'icon-social-facebook' %}
+      {% render 'icon-social-linkedin' %}
+    </div>
   </div>
 </footer>
+
+
+{% schema %}
+  {
+    "name": "t:settings_schema.sections.footer.name",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "Footer Navigation Menu"
+      }
+    ]
+  }
+{% endschema %}

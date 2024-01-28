@@ -21,6 +21,9 @@
       "header": {
         "name": "Header"
       },
+      "footer": {
+        "name": "Footer"
+      },
       "announcement-bar": {
         "name": "Announcement Bar",
         "settings": {
